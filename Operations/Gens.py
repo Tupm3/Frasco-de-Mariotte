@@ -12,4 +12,7 @@ def generateData(data, num):
     - Numero de datos que va a generar la lista '''
     lista = []
     for i in range(0,num):
-        lista.append()
+        lista.append(float(random.uniform(data+0.1,data+0.6)))
+        ''' Agrega a la lista un numero aleatorio del dato + una variacion entre 0.1 y 0.6 '''
+    '''* Regresa la lista *'''
+    return lista
