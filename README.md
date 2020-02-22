@@ -2,7 +2,7 @@
 El python para generar las esas weas...
 
 ## Distribución
-===============
+-------------------------------------------------------------------------------------------------------
 El programa general tiene un módulo Main.py desde el que se ejecutará el python (//TODO) y un paquete 'Operations',
 donde se encuentran los módulos y métodos necesarios.
 - Operations

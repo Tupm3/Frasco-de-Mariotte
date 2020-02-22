@@ -2,7 +2,6 @@
 Clase Estatica para generar datos e.e '''
 import random
 '''Importacion de la libreria random'''
-
 @staticmethod
 def generateData(data, num):
     '''# Generate Data\n
