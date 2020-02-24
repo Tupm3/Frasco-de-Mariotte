@@ -53,7 +53,7 @@ def torricelliEq(H):
     Metodo invocable para obtener velocidad siguiendo la ecuacion:
     v = sqrt((2*g)*H)\n
     Requiere:\n
-    - H'''
+    - Altura (H)'''
     '''* Aplicacion de la formula para devolver la velocidad *'''
     return sqrt((19.62)*H)
 

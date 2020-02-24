@@ -30,7 +30,8 @@ def exportar_csv(velM,ac,velS):
             '''Titulos del CSV'''
             for i in range (0, 30):
                 renglon = [str(i),str(velM[i]),str(ac[i]),str(velS[i])]
-                ''' Variables de Salida '''
+                ''' Variables de Salida. En orden:
+                [Numero de Repeticion, Velocidad Media, Aceleracion Media, Velocidad de Salida]'''
                 f_write.writerow(renglon)
                 '''Escritura del 'renglon' en el CSV'''
         print("Resultados exportados a: ",file)
