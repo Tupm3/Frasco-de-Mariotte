@@ -5,13 +5,9 @@ from csv import writer, QUOTE_MINIMAL
 file = "Resultados.csv"
 '''Nombre del archivo de Salida'''
 #------------------------------------#
-'''*****Clase incompleta*****'''
-'''
-# TODO
-- Definir Parametros
-- Cambiar las variables y nombres de Salida
-- Verificar posibles Excepciones de Salida
-'''
+'''***** Revision Requerida *****'''
+''' # TODO
+- Verificar posibles Excepciones de Salida '''
 @staticmethod
 def exportar_csv(velM,ac,velS):
     '''# Exportar CSV\n
