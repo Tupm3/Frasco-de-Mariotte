@@ -4,7 +4,7 @@
 
 ## Distribución
 -------------------------------------------------------------------------------------------------------
-El programa general tiene un módulo Main.py desde el que se ejecutará el python (//TODO) y un paquete 'Operations',
+El programa general tiene un módulo **Main.py** desde el que se ejecutará el python (//TODO) y un paquete **'Operations'**,
 donde se encuentran los módulos y métodos necesarios.
 - ### Main
     - // TODO Modulo Ejecutable
@@ -25,4 +25,5 @@ Dentro de cada módulo hay más datos sobre lo que pasa en cada método
 
 ## Notas
 ---------------------------------------------------------------------------------------------------------
-- Las cosas por hacer se marcaron con un //TODO
+- Las cosas por hacer se marcaron con un **//TODO**
+- Dentro de **'Operations'** hay un módulo **'__init__.py'**, este es necesario para que Python lo reconozca como Paquete
