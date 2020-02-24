@@ -5,6 +5,8 @@ El Python para generar datos y operaciones...
 -------------------------------------------------------------------------------------------------------
 El programa general tiene un módulo Main.py desde el que se ejecutará el python (//TODO) y un paquete 'Operations',
 donde se encuentran los módulos y métodos necesarios.
+- ### Main
+    - // TODO Modulo Ejecutable
 - ### Operations
   - #### CSV_Controller
       - Modulo desde el que se exportaran los datos
@@ -19,3 +21,7 @@ donde se encuentran los módulos y métodos necesarios.
 ## Documentación
 ---------------------------------------------------------------------------------------------------------
 Dentro de cada módulo hay más datos sobre lo que pasa en cada método
+
+## Notas
+---------------------------------------------------------------------------------------------------------
+- Las cosas por hacer se marcaron con un //TODO
