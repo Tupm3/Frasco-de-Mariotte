@@ -2,8 +2,8 @@
 Clase Estatica de Manejo de Archivos CSV'''
 from csv import writer, QUOTE_MINIMAL
 '''Importacion de elementos necesarios para CSV'''
-csv_File = "Resultados.csv"
-'''Nombre del archivo de Salida''''
+file = "Resultados.csv"
+'''Nombre del archivo de Salida'''
 #------------------------------------#
 '''*****Clase incompleta*****'''
 '''
@@ -12,10 +12,16 @@ csv_File = "Resultados.csv"
 - Cambiar las variables y nombres de Salida
 - Verificar posibles Excepciones de Salida
 '''
-@staticmethodu
-def exportar_csv(params):
-    #TODO
-    '''Definicion de Parametros para el manejo de CSV'''
+@staticmethod
+def exportar_csv(velM,ac,velS):
+    '''# Exportar CSV\n
+    Método invocable para exportar los datos a un archivo CSV\n
+    Requiere\n
+    - Lista de Velocidad Media\n
+    - Lista de Aceleración Media\n
+    - Lista de Velocidad de Salida\n
+    Notas\n
+    - Todas las listas deben tener 30 Posiciones '''
     renglon = []
     '''Iniciacion de la lista 'renglon' que servira para imprimir las variables en el CSV'''
     try:
@@ -24,13 +30,11 @@ def exportar_csv(params):
             '''Usando un archivo 'creable' llamado #csv_file#'''
             f_write = writer(csv_file, delimiter = ',', quotechar='"', quoting=QUOTE_MINIMAL)####
             '''Iniciacion del writer de CSV. ##LINEA OBLIGATORIA##'''
-            #f_write.writerow(["x" , "y" , "Distancia", "Radio de Curvatura", "Vel Max"])
-            #TODO
+            f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida"])
             '''Titulos del CSV'''
-            for i in range (0, len(x)):
-                #renglon = [str(x[i]), str(y[i]), str(dist[i]),str(curvas[i]),str(vmax[i])]
-                #TODO
-                ''' Cambiar variables de salida'''
+            for i in range (0, 30):
+                renglon = [str(i),str(velM[i]),str(ac[i]),str(velS[i])]
+                ''' Variables de Salida '''
                 f_write.writerow(renglon)
                 '''Escritura del 'renglon' en el CSV'''
         print("Resultados exportados a: ",file)
