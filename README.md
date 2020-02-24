@@ -15,6 +15,7 @@ donde se encuentran los módulos y métodos necesarios.
       - Modulo donde se encuentran todos los métodos de cálculos y operaciones
   - #### Gens
       - Modulo donde se generan los datos e.e
+      - Todas las operaciones se aplicaran aqui
   - #### UI
       - Modulo con los métodos de interfaz de usuario
 
