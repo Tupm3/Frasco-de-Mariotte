@@ -58,7 +58,7 @@ def torricelliEq(H):
     return sqrt((19.62)*H)
 
 @staticmethod
-def getDensity(m,V):
+def getDensity(m,v):
     ''' # Get Density\n
     Método para obtener la densidad de un liquido por la forma
     den = m/V \n
@@ -66,3 +66,4 @@ def getDensity(m,V):
     - Masa
     - Volumen '''
     return m/V
+
