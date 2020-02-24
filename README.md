@@ -1,4 +1,5 @@
 # Las Weas del Mario
+-------------------------------------------------------------------------------------------------------
 El Python para generar datos y operaciones...
 
 ## Distribución
