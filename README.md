@@ -19,7 +19,6 @@ donde se encuentran los módulos y métodos necesarios.
   - #### UI
       - Modulo con los métodos de interfaz de usuario
 
-
 ## Documentación
 ---------------------------------------------------------------------------------------------------------
 Dentro de cada módulo hay más datos sobre lo que pasa en cada método
