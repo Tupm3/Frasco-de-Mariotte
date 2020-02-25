@@ -4,10 +4,6 @@ from csv import writer, QUOTE_MINIMAL
 '''Importacion de elementos necesarios para CSV'''
 file = "Resultados.csv"
 '''Nombre del archivo de Salida'''
-#------------------------------------#
-'''***** Revision Requerida *****'''
-''' # TODO
-- Verificar posibles Excepciones de Salida '''
 def exportar_csv(velM,ac,velS):
     '''# Exportar CSV\n
     Método invocable para exportar los datos a un archivo CSV\n

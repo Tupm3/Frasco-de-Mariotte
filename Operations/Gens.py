@@ -72,6 +72,7 @@ class Gens:
                 acc=arry_velocidades[x+1]-arry_velocidades[x]/fabs(arry_tiempo[x+1]-arry_tiempo[x])
             except IndexError as ie:
                 acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
+            except ZeroDivisionError as zde: pass
             except Exception as e:
                 print("Uncontrolled Exception....",e)
                 acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
