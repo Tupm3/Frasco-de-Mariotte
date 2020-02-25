@@ -45,6 +45,16 @@ class Gens:
             v=altura[i]/tiempo[i]
             velocidades.append(v)
         return velocidades,tiempo,altura
+    @staticmethod    
+    def getTiempo():
+        vel,tiemp,altur=Gens.velocidad_media()
+        return tiemp
+    @staticmethod    
+    def getAltura():
+        vel,tiemp,altur=Gens.velocidad_media()
+        return altur
+     
+
     
     @staticmethod
     def velocidadMedia():

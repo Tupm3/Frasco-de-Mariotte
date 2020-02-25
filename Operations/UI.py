@@ -27,7 +27,7 @@ def start():
     os.system('cls')
     op = input("Iniciar Exportacion de Datos S / N: ")
     if op == "S" or op == "s":
-        Operations.CSV_Controller.exportar_csv(gens.velocidadMedia(),gens.aceleracionMedia(),gens.velocidadCaudal())
+        Operations.CSV_Controller.exportar_csv(gens.velocidadMedia(),gens.aceleracionMedia(),gens.velocidadCaudal(),gens.kinectic(),gens.getTiempo,gens.getAltura)
     else: "Sakc alv"
     print("Fin del Programa....")
     p = input("Presione cualquier tecla...")

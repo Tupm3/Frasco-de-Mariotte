@@ -4,7 +4,7 @@ from csv import writer, QUOTE_MINIMAL
 '''Importacion de elementos necesarios para CSV'''
 file = "Resultados.csv"
 '''Nombre del archivo de Salida'''
-def exportar_csv(velM,ac,velS):
+def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
     '''# Exportar CSV\n
     Método invocable para exportar los datos a un archivo CSV\n
     Requiere\n
@@ -24,7 +24,7 @@ def exportar_csv(velM,ac,velS):
             f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida"])
             '''Titulos del CSV'''
             for i in range(0,30):
-                 renglon = [i+1,str(velM[i]),str(ac[i]),str(velS[i])]
+                 renglon = [i+1,str(velM[i]),str(ac[i]),str(velS[i]),str(kinectic[i]),str(tiempo[i]),str(altura[i])]
                  f_write.writerow(renglon)
                  ''' Variables de Salida. En orden:
                 [" ", Velocidad Media, Aceleracion Media, Velocidad de Salida]'''
