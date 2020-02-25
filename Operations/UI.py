@@ -23,7 +23,7 @@ def start():
     print("Cargando.",end="")
     for i in range(0,6): 
         print(".",end="")
-        time.sleep(0.6)
+        time.sleep(0.3)
     os.system('cls')
     op = input("Iniciar Exportacion de Datos S / N: ")
     if op == "S" or op == "s":
