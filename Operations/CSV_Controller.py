@@ -21,7 +21,7 @@ def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
             '''Usando un archivo 'creable' llamado #csv_file#'''
             f_write = writer(csv_file, delimiter = ',', quotechar='"', quoting=QUOTE_MINIMAL)####
             '''Iniciacion del writer de CSV. ##LINEA OBLIGATORIA##'''
-            f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida","Energía Cinética","Tiempo (s)","Altura (cm)"])
+            f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida","Energía Cinética","Tiempo(s)","Altura(cm)"])
             '''Titulos del CSV'''
             for i in range(0,30):
                  renglon = [i+1,str(velM[i]),str(ac[i]),str(velS[i]),str(kinectic[i]),str(tiempo[i]),str(altura[i])]
