@@ -2,7 +2,6 @@
 Clase Estatica de Calculos'''
 from math import sqrt, pow 
 '''Importación de sqrt() y pow'''
-@staticmethod
 def promedio(lista):
     ''' # Promedio\n
     Método invocable para obtener el promedio\n
@@ -14,7 +13,6 @@ def promedio(lista):
     ''' * Devuelve el promedio '''
     return s/len(lista)
 
-@staticmethod
 def standardDev(lista):
     ''' # Desviacion Estandar\n 
     Método invocable para obtener la Desviación Standard de una lista\n
@@ -30,7 +28,6 @@ def standardDev(lista):
     '''* Aplicacion de la formula de Desviacion Standard *'''
     return sqrt(s/N)
 
-@staticmethod
 def error(flist, slist):
     ''' # Error \n
     Método invocable para obtener el error para un dato usando la forma \n
@@ -47,7 +44,6 @@ def error(flist, slist):
     '''* Aplicacion de la formula para devolver el error *'''
     return ((sp*f)+(fp*s))/pow(sp,2)
 
-@staticmethod
 def torricelliEq(H):
     ''' # Teorema de Torricelli \n
     Metodo invocable para obtener velocidad siguiendo la ecuacion:
@@ -57,7 +53,6 @@ def torricelliEq(H):
     '''* Aplicacion de la formula para devolver la velocidad *'''
     return sqrt((19.62)*H)
 
-@staticmethod
 def getDensity(m,v):
     ''' # Get Density\n
     Método para obtener la densidad de un liquido por la forma
@@ -72,7 +67,6 @@ def caudalError(H):
     Devuelve el error a partir de la ecuacion de Torricelli '''
     return sqrt(19.62) * (0.5*(pow(promedio(H),-0.5))) * standardDev(H)
 
-@staticmethod
 def energiaK(caudal):
     '''# Energia Cinética \n 
     Devuelve un valor de acuerdo al valor del caudal. \n
@@ -82,7 +76,6 @@ def energiaK(caudal):
     '''* Devuelve el dato *'''
     return k
 
-@staticmethod
 def energiaKError(caudalList,vel):
     '''# Error de la Energía Cinética\n
     Devuelve el error de la Energía Cinética\n

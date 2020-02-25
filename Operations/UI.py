@@ -2,10 +2,9 @@
 Clase Estatica de Interfaz de Usuario'''
 import Operations.CSV_Controller
 from Operations.Gens import Gens as gens
-import os
+import os,time
 '''Importacion de los otros modulos del paquete'''
 
-@staticmethod
 def getArray():
     lista = []
     print("Ingresa cada valor necesario para la lista.")
@@ -19,11 +18,12 @@ def getArray():
     '''* Devuelve la lista generada *'''
     return lista
 
-@staticmethod
 def start():
     print("****BIENVENIDOS******")
     print("Cargando.",end="")
-    for i in range(0,6): print(".",end="")
+    for i in range(0,6): 
+        print(".",end="")
+        time.sleep(0.4)
     os.system('cls')
     op = input("Iniciar Exportacion de Datos S / N")
     if op == "S" or op == "s":

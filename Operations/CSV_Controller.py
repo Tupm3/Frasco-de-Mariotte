@@ -8,7 +8,6 @@ file = "Resultados.csv"
 '''***** Revision Requerida *****'''
 ''' # TODO
 - Verificar posibles Excepciones de Salida '''
-@staticmethod
 def exportar_csv(velM,ac,velS):
     '''# Exportar CSV\n
     Método invocable para exportar los datos a un archivo CSV\n
