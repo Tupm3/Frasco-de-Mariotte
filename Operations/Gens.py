@@ -2,6 +2,7 @@
 Clase Estatica para generar datos e.e '''
 import random
 import Operations.MathOp as op
+from math import fabs
 '''Importacion de la libreria random'''
 class Gens:
     '''# Clase de Generadores '''
@@ -68,12 +69,12 @@ class Gens:
         while x<len(arry_tiempo):
             try:
                 x+=1
-                acc=arry_velocidades[x+1]-arry_velocidades[x]/abs(arry_tiempo[x+1]-arry_tiempo[x])
+                acc=arry_velocidades[x+1]-arry_velocidades[x]/fabs(arry_tiempo[x+1]-arry_tiempo[x])
             except IndexError as ie:
-                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[x-2]-arry_tiempo[x-1])
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
             except Exception as e:
                 print("Uncontrolled Exception....",e)
-                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[x-2]-arry_tiempo[x-1])
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
             acceleraciones.append(acc)
         return acceleraciones
     
