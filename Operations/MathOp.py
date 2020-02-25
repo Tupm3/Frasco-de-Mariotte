@@ -8,10 +8,14 @@ def promedio(lista):
     Requiere:\n
     - Lista de Datos'''
     s = 0
-    for i in range (0,len(lista)):
-        s += float(lista[i])
+    try:
+        for i in range (0,len(lista)):
+            s += float(lista[i])
+        result = s/len(lista)
+    except Exception as e:
+        result =lista/1
     ''' * Devuelve el promedio '''
-    return s/len(lista)
+    return result
 
 def standardDev(lista):
     ''' # Desviacion Estandar\n 
@@ -19,12 +23,15 @@ def standardDev(lista):
     Requiere:\n
     - Lista de Datos '''
     ''' Iniciacion de variables'''
-    N = len(lista)
+    if type(lista) == float:
+        N = 1
+    else:
+        N = len(lista)
     xProm = promedio(lista)
     s =  0
     ''' Suma de los datos'''
     for i in range (0,N):
-        s += (lista[i]-xProm)
+        s += (float(lista[i])-xProm)
     '''* Aplicacion de la formula de Desviacion Standard *'''
     return sqrt(abs(s/N))
 
@@ -82,4 +89,4 @@ def energiaKError(caudalList,vel):
     Requiere:\n
     - Lista de Valores de Caudal
     - Lista de velocidades'''
-    return 0.5((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* standardDev(2.6))+promedio(2.6)*standardDev(121*21))/pow(promedio(121*11),2))
+    return 0.5*((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*0/pow(promedio(121*11),2)))
