@@ -21,7 +21,7 @@ def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
             '''Usando un archivo 'creable' llamado #csv_file#'''
             f_write = writer(csv_file, delimiter = ',', quotechar='"', quoting=QUOTE_MINIMAL)####
             '''Iniciacion del writer de CSV. ##LINEA OBLIGATORIA##'''
-            f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida"])
+            f_write.writerow(["Repetición","Velocidad Media","Aceleracion Media","Velocidad de Salida","Energía Cinética","Tiempo","Altura"])
             '''Titulos del CSV'''
             for i in range(0,30):
                  renglon = [i+1,str(velM[i]),str(ac[i]),str(velS[i]),str(kinectic[i]),str(tiempo[i]),str(altura[i])]
@@ -30,6 +30,10 @@ def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
                 [" ", Velocidad Media, Aceleracion Media, Velocidad de Salida]'''
         print("Resultados exportados a: ",file)
         ''' Mensaje de Operacion Completada'''
+    except PermissionError as pe:
+        print("Verifique que el archivo no esté en uso...")
+        p = input("[ENTER]")
+        exportar_csv(velM,ac,velS,kinectic,tiempo,altura)
     except Exception as e:
         ''' TODO Verifiacion de Excepciones '''
         print("Error no controlado...")
