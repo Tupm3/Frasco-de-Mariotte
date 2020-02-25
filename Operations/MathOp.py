@@ -9,7 +9,7 @@ def promedio(lista):
     - Lista de Datos'''
     s = 0
     for i in range (0,len(lista)):
-        s += lista[i]
+        s += float(lista[i])
     ''' * Devuelve el promedio '''
     return s/len(lista)
 

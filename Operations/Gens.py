@@ -80,9 +80,11 @@ class Gens:
             try:
                 x+=1
                 acc=arry_velocidades[x+1]-arry_velocidades[x]/fabs(arry_tiempo[x+1]-arry_tiempo[x])
-            except IndexError as ie:
-                acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
             except ZeroDivisionError as zde: pass
+            except IndexError as ie:
+                try:
+                    acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
+                except ZeroDivisionError as zde: pass
             except Exception as e:
                 print("Uncontrolled Exception....",e)
                 acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
@@ -105,18 +107,29 @@ class Gens:
         return ac
         
     @staticmethod
-    def velocidadCaudal():
-        '''# Velocidad Caudal\n
-        Devuelve la lista de datos calculando el caudal usando la equacion de Torricelli y asignando error'''
+    def velocidad_Caudal():
         caudal = []
         ''' Iniciacion de la lista de datos a devolver '''
         alturas = Gens.gen_altura(7)
         ''' Generación de la lista de alturas '''
         for i in range(0,len(alturas)):
             H = 21 - alturas[i]
-            caudal.append(str(op.torricelliEq(H))+"+-"+str(op.caudalError(alturas)))
+            caudal.append(str(op.torricelliEq(H)))
             ''' Se agrega a la lista el dato generado con la altura correspondiente de la lista '''
         '''* Devuelve la lista de datos *'''
+        return caudal
+    
+    @staticmethod
+    def velocidadCaudal():
+        '''# Velocidad Caudal\n
+        Devuelve la lista de datos calculando el caudal usando la equacion de Torricelli y asignando error'''
+        caudal = []
+        vels = Gens.velocidad_Caudal()
+        alturas = Gens.gen_altura(7)
+        for i in range(0,30):
+            H = 21 - alturas[i]
+            s=vels[i]+"+-"+str(op.caudalError(alturas))
+            caudal.append(s)
         return caudal
     
     @staticmethod
@@ -125,9 +138,9 @@ class Gens:
          Devuelve una lista de energías Cinéticas en los puntos'''
         k = []
         ''' Iniciacion de lista a devolver '''
-        vCaudal = Gens.velocidadCaudal()
+        vCaudal = Gens.velocidad_Caudal()
         vels,temps,h = Gens.velocidad_media()
-        error = op.energiaKError(vCaudal)
+        error = op.energiaKError(vCaudal,vels)
         ''' "Importacion" de Datos '''
         for element in vCaudal:
             k.append(str(op.energiaK(element))+"+-"+str(error))
