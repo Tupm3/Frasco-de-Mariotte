@@ -4,10 +4,10 @@
 
 ## Distribución
 -------------------------------------------------------------------------------------------------------
-El programa general tiene un módulo **Main.py** desde el que se ejecutará el python **(//TODO)** y un paquete **'Operations'**,
+El programa general tiene un módulo **Main.py** desde el que se ejecutará el python y un paquete **'Operations'**,
 donde se encuentran los módulos y métodos necesarios.
 - ### Main
-    - **// TODO** Modulo Ejecutable
+    - Modulo Ejecutable
 - ### Operations
   - #### CSV_Controller
       - Modulo desde el que se exportaran los datos
