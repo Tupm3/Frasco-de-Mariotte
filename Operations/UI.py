@@ -1,6 +1,8 @@
 '''##UI
 Clase Estatica de Interfaz de Usuario'''
-import CSV_Controller, MathOp
+import Operations.CSV_Controller
+from Operations.Gens import Gens as gens
+import os
 '''Importacion de los otros modulos del paquete'''
 
 @staticmethod
@@ -9,9 +11,24 @@ def getArray():
     print("Ingresa cada valor necesario para la lista.")
     print("Por cada valor presiona Enter para introducir un nuevo valor...")
     print("Para no introducir más valores, introduce la letra: s")
+    inp = "a"
     while inp != 's':
         '''Letra 's' como valor para ya no introducir más valores a la lista'''
         lista.append(int(input("Ingresa valor: ")))
         ''' Se introducen los valores en la lista'''
-    '''* Devuelve la lista generada *''''
+    '''* Devuelve la lista generada *'''
     return lista
+
+@staticmethod
+def start():
+    print("****BIENVENIDOS******")
+    print("Cargando.",end="")
+    for i in range(0,6): print(".",end="")
+    os.system('cls')
+    op = input("Iniciar Exportacion de Datos S / N")
+    if op == "S" or op == "s":
+        Operations.CSV_Controller.exportar_csv(gens.velocidadMedia,gens.aceleracionMedia,gens.velocidadCaudal)
+    else: "Sakc alv"
+    print("Fin del Programa....")
+    p = input("Presione cualquier tecla...")
+    exit()

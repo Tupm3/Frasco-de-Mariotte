@@ -83,7 +83,10 @@ def energiaK(caudal):
     return k
 
 @staticmethod
-def energiaKError(caudalList,H,vel):
+def energiaKError(caudalList,vel):
     '''# Error de la Energía Cinética\n
-    Devuelve el error de la Energía Cinética'''
-    return 0.5((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(H))+((pow(promedio(vel),2))*(promedio(121*21)* standardDev(2.6))+promedio(2.6)*standardDev(121*21))/pow(promedio(121*11),2))
+    Devuelve el error de la Energía Cinética\n
+    Requiere:\n
+    - Lista de Valores de Caudal
+    - Lista de velocidades'''
+    return 0.5((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* standardDev(2.6))+promedio(2.6)*standardDev(121*21))/pow(promedio(121*11),2))

@@ -4,6 +4,7 @@ import random
 import Operations.MathOp as op
 '''Importacion de la libreria random'''
 class Gens:
+    '''# Clase de Generadores '''
     @staticmethod
     def generateData(data, num):
         '''# Generate Data\n
@@ -93,7 +94,7 @@ class Gens:
     @staticmethod
     def velocidadCaudal():
         '''# Velocidad Caudal\n
-        Devuelve la lista de datos calculando el caudal usando la equacion de Torricelli'''
+        Devuelve la lista de datos calculando el caudal usando la equacion de Torricelli y asignando error'''
         caudal = []
         ''' Iniciacion de la lista de datos a devolver '''
         alturas = Gens.gen_altura(7)
@@ -104,7 +105,23 @@ class Gens:
             ''' Se agrega a la lista el dato generado con la altura correspondiente de la lista '''
         '''* Devuelve la lista de datos *'''
         return caudal
-        
+    
+    @staticmethod
+    def kinectic():
+        '''# Energía Cinética\n
+         Devuelve una lista de energías Cinéticas en los puntos'''
+        k = []
+        ''' Iniciacion de lista a devolver '''
+        vCaudal = Gens.velocidadCaudal()
+        vels,temps,h = Gens.velocidad_media()
+        error = op.energiaKError(vCaudal)
+        ''' "Importacion" de Datos '''
+        for element in vCaudal:
+            k.append(str(op.energiaK(element))+"+-"+str(error))
+            ''' Se agrega a la lista el dato generado con su error '''
+        '''* Devuelve la lista de datos *'''
+        return k
+
              
 
 
