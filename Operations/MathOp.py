@@ -65,5 +65,25 @@ def getDensity(m,v):
     Requiere:\n
     - Masa
     - Volumen '''
-    return m/V
+    return m/v
 
+def caudalError(H):
+    '''# Error del Caudal\n
+    Devuelve el error a partir de la ecuacion de Torricelli '''
+    return sqrt(19.62) * (0.5*(pow(promedio(H),-0.5))) * standardDev(H)
+
+@staticmethod
+def energiaK(caudal):
+    '''# Energia Cinética \n 
+    Devuelve un valor de acuerdo al valor del caudal. \n
+    Requiere:\n
+    - Valor del Caudal'''
+    k = (0.5*getDensity(2.6,(21*121)))*pow(caudal,2)
+    '''* Devuelve el dato *'''
+    return k
+
+@staticmethod
+def energiaKError(caudalList,H,vel):
+    '''# Error de la Energía Cinética\n
+    Devuelve el error de la Energía Cinética'''
+    return 0.5((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(H))+((pow(promedio(vel),2))*(promedio(121*21)* standardDev(2.6))+promedio(2.6)*standardDev(121*21))/pow(promedio(121*11),2))
