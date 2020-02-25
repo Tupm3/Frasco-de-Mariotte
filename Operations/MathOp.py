@@ -1,6 +1,6 @@
 '''## MathOp
 Clase Estatica de Calculos'''
-from math import sqrt, pow 
+from math import sqrt, pow
 '''Importación de sqrt() y pow'''
 def promedio(lista):
     ''' # Promedio\n
@@ -26,7 +26,7 @@ def standardDev(lista):
     for i in range (0,N):
         s += (lista[i]-xProm)
     '''* Aplicacion de la formula de Desviacion Standard *'''
-    return sqrt(s/N)
+    return sqrt(abs(s/N))
 
 def error(flist, slist):
     ''' # Error \n

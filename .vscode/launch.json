@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "C:/Users/TOSHIBA-PC/Desktop/Tec/Fisica/Las-Weas-del-Mario-master/Las-Weas-del-Mario/Main.py",
             "console": "externalTerminal"
         }
     ]

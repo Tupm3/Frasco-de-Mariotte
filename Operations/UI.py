@@ -23,11 +23,11 @@ def start():
     print("Cargando.",end="")
     for i in range(0,6): 
         print(".",end="")
-        time.sleep(0.4)
+        time.sleep(0.6)
     os.system('cls')
-    op = input("Iniciar Exportacion de Datos S / N")
+    op = input("Iniciar Exportacion de Datos S / N: ")
     if op == "S" or op == "s":
-        Operations.CSV_Controller.exportar_csv(gens.velocidadMedia,gens.aceleracionMedia,gens.velocidadCaudal)
+        Operations.CSV_Controller.exportar_csv(gens.velocidadMedia(),gens.aceleracionMedia(),gens.velocidadCaudal())
     else: "Sakc alv"
     print("Fin del Programa....")
     p = input("Presione cualquier tecla...")

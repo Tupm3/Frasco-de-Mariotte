@@ -51,10 +51,10 @@ class Gens:
         Devuelve una lista str de las velocidades medias con su error '''
         ve = []
         ''' Iniciacion de la lista '''
-        velocidades, temps, ys = Gens.velocidad_media
+        velocidades, temps, ys = Gens.velocidad_media()
         ''' "Importacion" de los datos '''
         for element in velocidades:
-            ve.append(str(element)+"+-"+op.error(ys,temps))
+            ve.append(str(element)+"+-"+str(op.error(ys,temps)))
             ''' Se añade el error a cada velocidad media '''
         '''* Devuelce la lista con las velocidades y el error *'''
         return ve
@@ -63,23 +63,24 @@ class Gens:
     @staticmethod
     def acceleracion_media():
         acceleraciones=[]
-        estado=0
         arry_velocidades,arry_tiempo, a=Gens.velocidad_media()
         x=0
         while x<len(arry_tiempo):
             try:
                 x+=1
-                acc=arry_velocidades[x+1]-arry_velocidades[x]/arry_tiempo[x+1]-arry_tiempo[x]
+                acc=arry_velocidades[x+1]-arry_velocidades[x]/abs(arry_tiempo[x+1]-arry_tiempo[x])
             except IndexError as ie:
-                acc=arry_velocidades[0]-arry_velocidades[x]/arry_tiempo[0]-arry_tiempo[x]
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[0]-arry_tiempo[x-1])
             except Exception as e:
                 print("Uncontrolled Exception....",e)
-                acc=arry_velocidades[0]-arry_velocidades[x]/arry_tiempo[0]-arry_tiempo[x]
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[0]-arry_tiempo[x-1])
             acceleraciones.append(acc)
         return acceleraciones
     
     @staticmethod
     def aceleracionMedia():
+        '''# Aceleracion Media\n
+        Devuelve cada aceleracion con su error'''
         ac = []
         ''' Iniciacion de la lista de datos '''
         acc = Gens.acceleracion_media()
@@ -101,7 +102,7 @@ class Gens:
         ''' Generación de la lista de alturas '''
         for i in range(0,len(alturas)):
             H = 21 - alturas[i]
-            caudal.append(str(op.torricelliEq(H))+"+-"+op.caudalError(alturas))
+            caudal.append(str(op.torricelliEq(H))+"+-"+str(op.caudalError(alturas)))
             ''' Se agrega a la lista el dato generado con la altura correspondiente de la lista '''
         '''* Devuelve la lista de datos *'''
         return caudal
