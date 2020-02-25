@@ -79,7 +79,7 @@ def energiaK(caudal):
     Devuelve un valor de acuerdo al valor del caudal. \n
     Requiere:\n
     - Valor del Caudal'''
-    k = (0.5*getDensity(2.6,(21*121)))*pow(caudal,2)
+    k = (0.5*getDensity(2.6,(21*121)))*pow(float(caudal),2)
     '''* Devuelve el dato *'''
     return k
 
