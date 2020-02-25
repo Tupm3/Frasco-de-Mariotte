@@ -70,10 +70,10 @@ class Gens:
                 x+=1
                 acc=arry_velocidades[x+1]-arry_velocidades[x]/abs(arry_tiempo[x+1]-arry_tiempo[x])
             except IndexError as ie:
-                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[0]-arry_tiempo[x-1])
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[x-2]-arry_tiempo[x-1])
             except Exception as e:
                 print("Uncontrolled Exception....",e)
-                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[0]-arry_tiempo[x-1])
+                acc=arry_velocidades[0]-arry_velocidades[x-1]/abs(arry_tiempo[x-2]-arry_tiempo[x-1])
             acceleraciones.append(acc)
         return acceleraciones
     
