@@ -30,6 +30,7 @@ Dentro de cada módulo hay más datos sobre lo que pasa en cada método
 - Dentro de **'Operations'** hay un módulo **'__init__.py'**, este es necesario para que Python lo reconozca como Paquete
 - El CSV generado es: **'Resultados.csv'**
 - El **'.gitignore'** se encarga de no actualizar en Github los archivos **'Caché'** y **'launch.json'** de VS Code 
+---------------------------------------------------------------------------------------------------------
 
-**Programa Probado**
-**Ultima version estable: 25/02/2020 11:52**
+- **Programa Probado**
+- **Ultima version estable: 25/02/2020 11:52**
