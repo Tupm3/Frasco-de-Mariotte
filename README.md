@@ -27,6 +27,7 @@ Dentro de cada módulo hay más datos sobre lo que pasa en cada método
 ---------------------------------------------------------------------------------------------------------
 - Las cosas por hacer se marcaron con un **//TODO**
 - Dentro de **'Operations'** hay un módulo **'__init__.py'**, este es necesario para que Python lo reconozca como Paquete
+- El CSV generado es: **'Resultados.csv'**
 
-**#Programa Probado#**
+**Programa Probado**
 **Ultima version estable: 25/02/2020 11:52**
