@@ -22,10 +22,14 @@ class Gens:
 
     @staticmethod
     def gen_altura(promalt):
+        '''# Generar Altura\n
+        Metodo invocable para regresar la lista de alturas '''
         return Gens.generateData(promalt,30)
     
     @staticmethod 
     def gen_tiempo(data,num):
+        '''# Generar Tiempo\n
+        Metodo invocable para regresar una lista de tiempos '''
         lista = []
         for i in range(0,num):
             lista.append(int(random.randint(data-1,data+3)))
@@ -35,26 +39,37 @@ class Gens:
 
     @staticmethod
     def velocidad_media():
+        '''# Velocidad_media\n
+        - Genera los datos de velocidad sin asignar el error'''
         velocidades=[]
         tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
+        ''' Lista de valores conociddos '''
         tiempos=Gens.gen_tiempo(110,10)
+        ''' Se generan tiempos alrededor del valor medio: 110 '''
         altura=Gens.gen_altura(7)
         for elements in tiempos:
             tiempo.append(elements)
+            ''' Se completa la lista general de tiempos '''
         for i in range(0,len(tiempo)):
             v=altura[i]/tiempo[i]
             velocidades.append(v)
+            '''Se genera el valor de cada tiempo y se agrega a la lista general '''
+        '''Devuelve las listas de velocidad, tiempo y altura generadas '''
         return velocidades,tiempo,altura
+    
     @staticmethod    
     def getTiempo():
+        '''# Get Tiempo\n
+        Devuelve la lista completa de Tiempos generada en el metodo de velocidad_media() '''
         vel,tiemp,altur=Gens.velocidad_media()
         return tiemp
+    
     @staticmethod    
     def getAltura():
+        '''# Get Altura\n
+        Devuelve la lista completa de Alturas generada en el metodo de velocidad_media() '''
         vel,tiemp,altur=Gens.velocidad_media()
         return altur
-     
-
     
     @staticmethod
     def velocidadMedia():
@@ -73,22 +88,32 @@ class Gens:
 
     @staticmethod
     def acceleracion_media():
+        '''# Aceleracion_Media\n
+        - Genera una lista de Aceleraciones sin asignar error '''
         acceleraciones=[]
         arry_velocidades,arry_tiempo, a=Gens.velocidad_media()
+        ''' "Importacion" de datos '''
         x=0
         while x<len(arry_tiempo):
             try:
+                '''Manejo de Excepciones Conocidas '''
                 x+=1
                 acc=arry_velocidades[x+1]-arry_velocidades[x]/fabs(arry_tiempo[x+1]-arry_tiempo[x])
-            except ZeroDivisionError as zde: pass
+                '''El valor siguiente de la lista - El valor actual / La diferencia de Tiempos '''
+            except ZeroDivisionError as zde: pass #'''Es probable que el valor se acerque a 0 '''
             except IndexError as ie:
+                ''' Excepcion programada, al final de la lista no existira un valor siguiente '''
                 try:
                     acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
-                except ZeroDivisionError as zde: pass
+                    ''' Por lo que puede generar un dato con el valor anterior '''
+                except ZeroDivisionError as zde: pass #'''Es probable que el valor se acerque a 0 '''
             except Exception as e:
+                ''' En caso de que ocurra una excepcion desconocida habrá que imprimirla y manejarla '''
                 print("Uncontrolled Exception....",e)
                 acc=arry_velocidades[0]-arry_velocidades[x-1]/fabs(arry_tiempo[x-2]-arry_tiempo[x-1])
             acceleraciones.append(acc)
+            '''Agregar el valor a la lista general de aceleraciones '''
+        ''' Devolver la lista '''
         return acceleraciones
     
     @staticmethod
@@ -125,11 +150,16 @@ class Gens:
         Devuelve la lista de datos calculando el caudal usando la equacion de Torricelli y asignando error'''
         caudal = []
         vels = Gens.velocidad_Caudal()
+        '''Importamos velocidad'''
         alturas = Gens.gen_altura(7)
+        '''Generamos lista de alturas '''
         for i in range(0,30):
             H = 21 - alturas[i]
+            '''Asignamos la altura 'H' necesaria '''
             s=vels[i]+"+-"+str(op.caudalError(alturas))
+            '''Asignamos el error a cada altura y lo agregamos a la lista general '''
             caudal.append(s)
+        ''' Devolvemos la lista '''
         return caudal
     
     @staticmethod

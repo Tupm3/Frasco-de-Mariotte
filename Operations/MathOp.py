@@ -9,6 +9,7 @@ def promedio(lista):
     - Lista de Datos'''
     s = 0
     try:
+        '''Manejo de Excepciones en caso de obtener solo un valor en la lista '''
         for i in range (0,len(lista)):
             s += float(lista[i])
         result = s/len(lista)
@@ -24,6 +25,8 @@ def standardDev(lista):
     - Lista de Datos '''
     ''' Iniciacion de variables'''
     if type(lista) == float:
+        '''Manejo de Excepciones en caso de recibir solo un valor.
+        - Posible desuso...'''
         N = 1
     else:
         N = len(lista)
