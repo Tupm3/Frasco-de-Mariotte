@@ -1,6 +1,6 @@
 # Las Weas del Mario
 -------------------------------------------------------------------------------------------------------
-**El Python para generar datos y operaciones...**
+**El Python para generar datos y operaciones correspondientes para el proyecto de *'Frasco de Mariotte'*...**
 
 ## Distribución
 -------------------------------------------------------------------------------------------------------
