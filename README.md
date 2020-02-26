@@ -22,6 +22,7 @@ donde se encuentran los módulos y métodos necesarios.
 ## Documentación
 ---------------------------------------------------------------------------------------------------------
 Dentro de cada módulo hay más datos sobre lo que pasa en cada método
+- Documentacion Actualizada
 
 ## Notas
 ---------------------------------------------------------------------------------------------------------
