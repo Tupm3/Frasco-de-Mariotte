@@ -1,6 +1,7 @@
 '''## MathOp
 Clase Estatica de Calculos'''
 from math import sqrt, pow
+from Operations.Gens import Gens as g
 '''Importación de sqrt() y pow'''
 def promedio(lista):
     ''' # Promedio\n
@@ -25,16 +26,14 @@ def standardDev(lista):
     - Lista de Datos '''
     ''' Iniciacion de variables'''
     if type(lista) == float:
-        '''Manejo de Excepciones en caso de recibir solo un valor.
-        - Posible desuso...'''
-        N = 1
-    else:
-        N = len(lista)
-    xProm = promedio(lista)
+        '''Manejo de Excepciones en caso de recibir solo un valor.'''
+        listan = g.generateData(lista)
+    N = len(listan)
+    xProm = promedio(listan)
     s =  0
     ''' Suma de los datos'''
     for i in range (0,N):
-        s += (float(lista[i])-xProm)
+        s += (float(listan[i])-xProm)
     '''* Aplicacion de la formula de Desviacion Standard *'''
     return sqrt(abs(s/N))
 
@@ -92,4 +91,4 @@ def energiaKError(caudalList,vel):
     Requiere:\n
     - Lista de Valores de Caudal
     - Lista de velocidades'''
-    return 0.5*((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*0/pow(promedio(121*11),2)))
+    return 0.5*((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*standardDev(getDensity(2.6,21*121))/pow(promedio(121*11),2)))

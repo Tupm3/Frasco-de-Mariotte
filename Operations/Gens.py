@@ -38,15 +38,17 @@ class Gens:
         return lista
 
     @staticmethod
-    def velocidad_media():
+    def velocidad_media(altura=Gens.gen_altura(7),tiempos=Gens.gen_tiempo(110,10)):
         '''# Velocidad_media\n
-        - Genera los datos de velocidad sin asignar el error'''
+        Genera los datos de velocidad sin asignar el error\n
+        - Sobrecarga:
+        Requiere:
+        - Altura
+        - Tiempo'''
         velocidades=[]
         tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
         ''' Lista de valores conociddos '''
-        tiempos=Gens.gen_tiempo(110,10)
         ''' Se generan tiempos alrededor del valor medio: 110 '''
-        altura=Gens.gen_altura(7)
         for elements in tiempos:
             tiempo.append(elements)
             ''' Se completa la lista general de tiempos '''
@@ -91,8 +93,11 @@ class Gens:
         '''# Aceleracion_Media\n
         - Genera una lista de Aceleraciones sin asignar error '''
         acceleraciones=[]
-        arry_velocidades,arry_tiempo, a=Gens.velocidad_media()
+        import_velocidades,arry_tiempo, a=Gens.velocidad_media(Gens.gen_altura(3.5),Gens.gen_tiempo(55,10))
         ''' "Importacion" de datos '''
+        arry_velocidades = []
+        for vel in import_velocidades:
+            '''Velocidad a la media'''
         x=0
         while x<len(arry_tiempo):
             try:
@@ -123,7 +128,7 @@ class Gens:
         ac = []
         ''' Iniciacion de la lista de datos '''
         acc = Gens.acceleracion_media()
-        vel, temps, ys = Gens.velocidad_media()
+        vel, temps, ys = Gens.velocidad_media(Gens.gen_altura(3.5))
         ''' "Importacion" de datos '''
         for element in acc:
             ac.append(str(element)+"+-"+str(op.error(vel,temps)))
