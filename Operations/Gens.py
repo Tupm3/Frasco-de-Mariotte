@@ -103,6 +103,7 @@ class Gens:
         arry_velocidades,arry_tiempo, a = Gens.velocidad_media(Gens.gen_altura(3.5), Gens.gen_tiempo(55,30))
         ''' "Importacion" de datos '''
         x=0
+        acc = 0
         while x<len(arry_tiempo):
             x+=1
             try:
