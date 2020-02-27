@@ -38,13 +38,16 @@ class Gens:
         return lista
 
     @staticmethod
-    def velocidad_media(altura=Gens.gen_altura(7),tiempos=Gens.gen_tiempo(110,10)):
+    def velocidad_media(altura = [0], tiempos = [0]):
         '''# Velocidad_media\n
         Genera los datos de velocidad sin asignar el error\n
         - Sobrecarga:
         Requiere:
         - Altura
         - Tiempo'''
+        if len(altura)<=1:
+            altura= Gens.gen_altura(7)
+            tiempos= Gens.gen_tiempo(110,10)
         velocidades=[]
         tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
         ''' Lista de valores conociddos '''

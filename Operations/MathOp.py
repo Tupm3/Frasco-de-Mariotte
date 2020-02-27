@@ -1,7 +1,7 @@
 '''## MathOp
 Clase Estatica de Calculos'''
 from math import sqrt, pow
-from Operations.Gens import Gens as g
+import Operations
 '''Importación de sqrt() y pow'''
 def promedio(lista):
     ''' # Promedio\n
@@ -27,7 +27,9 @@ def standardDev(lista):
     ''' Iniciacion de variables'''
     if type(lista) == float:
         '''Manejo de Excepciones en caso de recibir solo un valor.'''
-        listan = g.generateData(lista)
+        listan = Operations.Gens.Gens.generateData(lista)
+    else: 
+        listan = lista
     N = len(listan)
     xProm = promedio(listan)
     s =  0
