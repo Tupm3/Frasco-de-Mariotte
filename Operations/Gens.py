@@ -45,7 +45,7 @@ class Gens:
         Requiere:
         - Altura
         - Tiempo'''
-        if len(altura)<= 1:
+        if len(altura)<= 1 and len(tiempos)<=1:
             altura= Gens.gen_altura(7)
             tiempos= Gens.gen_tiempo(110,10)
             print(len(altura))
