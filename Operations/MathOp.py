@@ -27,7 +27,7 @@ def standardDev(lista):
     ''' Iniciacion de variables'''
     if type(lista) == float:
         '''Manejo de Excepciones en caso de recibir solo un valor.'''
-        listan = Operations.Gens.Gens.generateData(lista)
+        listan = Operations.Gens.Gens.generateData(lista,10)
     else: 
         listan = lista
     N = len(listan)

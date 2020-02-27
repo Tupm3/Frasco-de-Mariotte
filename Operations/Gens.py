@@ -133,7 +133,7 @@ class Gens:
         ac = []
         ''' Iniciacion de la lista de datos '''
         acc = Gens.acceleracion_media()
-        vel, temps, ys = Gens.velocidad_media(Gens.gen_altura(3.5))
+        vel, temps, ys = Gens.velocidad_media(Gens.gen_altura(3.5),Gens.gen_tiempo(55,30))
         ''' "Importacion" de datos '''
         for element in acc:
             ac.append(str(element)+"+-"+str(op.error(vel,temps)))
