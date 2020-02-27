@@ -48,8 +48,8 @@ class Gens:
         if len(altura)<= 1 and len(tiempos)<=1:
             altura= Gens.gen_altura(7)
             tiempos= Gens.gen_tiempo(110,10)
-            print(len(altura))
-            print(len(tiempos))
+            # print(len(altura))
+            # print(len(tiempos))
             tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
             ''' Lista de valores conociddos '''
             ''' Se generan tiempos alrededor del valor medio: 110 '''
@@ -63,7 +63,7 @@ class Gens:
             velocidades.append(v)
             '''Se genera el valor de cada tiempo y se agrega a la lista general '''
         '''Devuelve las listas de velocidad, tiempo y altura generadas '''
-        print(len(velocidades))
+        #print(len(velocidades))
         return velocidades,tiempo,altura
     
     @staticmethod    
