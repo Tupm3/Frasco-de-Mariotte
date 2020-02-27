@@ -45,21 +45,25 @@ class Gens:
         Requiere:
         - Altura
         - Tiempo'''
-        if len(altura)<=1:
+        if len(altura)<= 1:
             altura= Gens.gen_altura(7)
             tiempos= Gens.gen_tiempo(110,10)
+            print(len(altura))
+            print(len(tiempos))
+            tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
+            ''' Lista de valores conociddos '''
+            ''' Se generan tiempos alrededor del valor medio: 110 '''
+            for elements in tiempos:
+                tiempo.append(elements)
+                ''' Se completa la lista general de tiempos '''
+        else: tiempo = tiempos
         velocidades=[]
-        tiempo=[111,112,113,111,112,110,116,110,112,110,109,112,111,108,109,111,112,110,113,112]
-        ''' Lista de valores conociddos '''
-        ''' Se generan tiempos alrededor del valor medio: 110 '''
-        for elements in tiempos:
-            tiempo.append(elements)
-            ''' Se completa la lista general de tiempos '''
         for i in range(0,len(tiempo)):
             v=altura[i]/tiempo[i]
             velocidades.append(v)
             '''Se genera el valor de cada tiempo y se agrega a la lista general '''
         '''Devuelve las listas de velocidad, tiempo y altura generadas '''
+        print(len(velocidades))
         return velocidades,tiempo,altura
     
     @staticmethod    
@@ -96,16 +100,13 @@ class Gens:
         '''# Aceleracion_Media\n
         - Genera una lista de Aceleraciones sin asignar error '''
         acceleraciones=[]
-        import_velocidades,arry_tiempo, a=Gens.velocidad_media(Gens.gen_altura(3.5),Gens.gen_tiempo(55,10))
+        arry_velocidades,arry_tiempo, a = Gens.velocidad_media(Gens.gen_altura(3.5), Gens.gen_tiempo(55,30))
         ''' "Importacion" de datos '''
-        arry_velocidades = []
-        for vel in import_velocidades:
-            '''Velocidad a la media'''
         x=0
         while x<len(arry_tiempo):
+            x+=1
             try:
                 '''Manejo de Excepciones Conocidas '''
-                x+=1
                 acc=arry_velocidades[x+1]-arry_velocidades[x]/fabs(arry_tiempo[x+1]-arry_tiempo[x])
                 '''El valor siguiente de la lista - El valor actual / La diferencia de Tiempos '''
             except ZeroDivisionError as zde: pass #'''Es probable que el valor se acerque a 0 '''
