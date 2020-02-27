@@ -32,4 +32,4 @@ Dentro de cada módulo hay más datos sobre lo que pasa en cada método
 ---------------------------------------------------------------------------------------------------------
 
 - **Programa Probado**
-- **Ultima version estable: 25/02/2020 11:52**
+- **Ultima version estable: 27/02/2020 11:22**
