@@ -93,4 +93,4 @@ def energiaKError(caudalList,vel):
     Requiere:\n
     - Lista de Valores de Caudal
     - Lista de velocidades'''
-    return 0.5*((2*getDensity(2.6,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*standardDev(getDensity(2.6,21*121))/pow(promedio(121*11),2)))
+    return 0.5*((2*getDensity(2600,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*standardDev(getDensity(2600,21*121))/pow(promedio(121*11),2)))
