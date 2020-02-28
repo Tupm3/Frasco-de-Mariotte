@@ -1,4 +1,4 @@
-# Las Weas del Mario
+# Frasco de Mariotte
 -------------------------------------------------------------------------------------------------------
 **El Python para generar datos y operaciones correspondientes para el proyecto de *'Frasco de Mariotte'*...**
 
