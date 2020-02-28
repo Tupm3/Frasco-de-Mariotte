@@ -89,7 +89,7 @@ class Gens:
         velocidades, temps, ys = Gens.velocidad_media()
         ''' "Importacion" de los datos '''
         for element in velocidades:
-            ve.append(str(element)+"+-"+str(op.error(ys,temps)))
+            ve.append(str(element/10000)+"+-"+str(op.error(ys,temps)))
             ''' Se añade el error a cada velocidad media '''
         '''* Devuelce la lista con las velocidades y el error *'''
         return ve
@@ -136,7 +136,7 @@ class Gens:
         vel, temps, ys = Gens.velocidad_media(Gens.gen_altura(3.5),Gens.gen_tiempo(55,30))
         ''' "Importacion" de datos '''
         for element in acc:
-            ac.append(str(element)+"+-"+str(op.error(vel,temps)))
+            ac.append(str(element/10000)+"+-"+str(op.error(vel,temps)))
             ''' Se añade el error a cada aceleracion media '''
         '''* Devuelve la lista de datos *'''
         return ac
@@ -149,7 +149,7 @@ class Gens:
         ''' Generación de la lista de alturas '''
         for i in range(0,len(alturas)):
             H = 21 - alturas[i]
-            caudal.append(str(op.torricelliEq(H)))
+            caudal.append(str(op.torricelliEq(H)/1000))
             ''' Se agrega a la lista el dato generado con la altura correspondiente de la lista '''
         '''* Devuelve la lista de datos *'''
         return caudal
