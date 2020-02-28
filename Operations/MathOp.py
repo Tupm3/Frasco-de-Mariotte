@@ -83,7 +83,7 @@ def energiaK(caudal):
     Devuelve un valor de acuerdo al valor del caudal. \n
     Requiere:\n
     - Valor del Caudal'''
-    k = (0.5*getDensity(2.6,(21*121)))*pow(float(caudal),2)
+    k = (0.5*getDensity(2600,(21*121)))*pow(float(caudal),2)
     '''* Devuelve el dato *'''
     return k
 
@@ -93,4 +93,4 @@ def energiaKError(caudalList,vel):
     Requiere:\n
     - Lista de Valores de Caudal
     - Lista de velocidades'''
-    return 0.5*((2*getDensity(2600,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)* 0)+promedio(2.6)*standardDev(getDensity(2600,21*121))/pow(promedio(121*11),2)))
+    return 0.5*((2*getDensity(2600,121*21)*promedio(caudalList)*caudalError(caudalList))+((pow(promedio(vel),2))*(promedio(121*21)*standardDev(getDensity(2600,21*121)))+promedio(2.6)*standardDev(getDensity(2600,21*121))/pow(promedio(121*11),2)))
