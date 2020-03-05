@@ -1,7 +1,7 @@
 '''##Gens
 Clase Estatica para generar datos e.e '''
 import random
-import Operations.MathOp as op
+from Operations.MathOp import MathOp as op
 from math import fabs
 '''Importacion de la libreria random'''
 class Gens:
