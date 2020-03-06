@@ -113,6 +113,7 @@ class Act2(MathOp):
         '''Grafica'''
         name = "Grafica_{}.png".format(graph)
         plt.savefig(name)
+        plt.clf()
         '''Exportacion de la grafica'''
         print("Gráfica "+name+" exportada...")
     
@@ -145,7 +146,7 @@ class Act2(MathOp):
             vhlist.append(b1)
             rep += 1
             graphName = "h_Repeticion"+ str(rep)
-            #Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
+            Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
             print("-"*57)
         # print(Act2.Hagua)
         # print(Act2.tiempos)
