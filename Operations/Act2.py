@@ -73,6 +73,12 @@ class Act2(MathOp):
         minimosCuadrados = num/den
         '''Aplicacion de la formula'''
         '''Regresa el valor obtenido'''
+        print("MINIMOS CUADRADOS")
+        print("-"*57)
+        print("Numerador: ",num)
+        print("Denum: ",den)
+        print("Minimos Cuadrados: ",minimosCuadrados)
+        print("-"*57)
         return minimosCuadrados
 
     @staticmethod
@@ -84,8 +90,6 @@ class Act2(MathOp):
         '''Promedio de Y'''
         px = Act2.promedio(x)
         '''Promedio de X'''
-        B1 = Act2.minimos_cuadrados(x,y)
-        '''Beta 1 con minimos cuadrados'''
         b0 = py - (B1*px)
         '''Aplicacion de la formula'''
         '''Regresa el calculo'''
@@ -112,10 +116,10 @@ class Act2(MathOp):
         aIndex = 0
         fIndex = 10
         rep = 0
-        for i in range(0,len(Act2.hPopote)):
+        for i in range(0,5):
             H = Act2.hPopote[rep]
-            b1 = Act2.minimos_cuadrados(Act2.Hagua,Act2.tiempos[aIndex:fIndex])
-            b0 = Act2.B0(Act2.Hagua,Act2.tiempos[aIndex:fIndex],b1)
+            b1 = Act2.minimos_cuadrados(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex])
+            b0 = Act2.B0(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],b1)
             Vh = b0 + b1*H
             aIndex += 10
             fIndex += 10
