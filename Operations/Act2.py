@@ -36,6 +36,7 @@ class Act2(MathOp):
         with open("hPopote.txt","r") as f: 
             for element in f.readlines(): 
                 Act2.hPopote.append(float(element))
+        os.chdir(path)
 
     @staticmethod
     def minimos_cuadrados(lx,ly):
@@ -119,6 +120,10 @@ class Act2(MathOp):
     
     @staticmethod    
     def Mediciones():
+        '''Medicion de Datos'''
+        path = os.getcwd()
+        resultPath = path+"\Resultados"
+        os.chdir(resultPath)
         '''Primera Medicion'''
         file = "Vh_CSV.csv"
         aIndex = 0
@@ -141,13 +146,13 @@ class Act2(MathOp):
                 hList.append(b0+(b1*times[c]))
                 print("Time: "+str(times[c])+" "*10,end="")
                 print("h: "+str(b0+(b1*times[c]))+" cm")
-            aIndex += 10
-            fIndex += 10
             vhlist.append(b1)
             rep += 1
             graphName = "h_Repeticion"+ str(rep)
-            Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
+            Act2.plot_graph(times,Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
             print("-"*57)
+            aIndex += 10
+            fIndex += 10
         # print(Act2.Hagua)
         # print(Act2.tiempos)
         print("##SEGUNDA MEDICION##")
@@ -174,3 +179,4 @@ class Act2(MathOp):
             print("Vh2: ",Vh2)
             print("-"*57)
         print("**END**")
+        os.chdir(path)
