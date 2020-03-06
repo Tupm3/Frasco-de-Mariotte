@@ -46,3 +46,4 @@ def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
         ''' TODO Verifiacion de Excepciones '''
         print("Error no controlado...")
         print(e) #Impresion del Error
+    

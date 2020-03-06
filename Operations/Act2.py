@@ -1,5 +1,6 @@
-import matplotlib as p
+import matplotlib.pyplot as p
 from Operations.MathOp import MathOp
+from csv import writer, QUOTE_MINIMAL
 from math import sqrt
 import os
 from DB import *
@@ -73,7 +74,7 @@ class Act2(MathOp):
         minimosCuadrados = num/den
         '''Aplicacion de la formula'''
         '''Regresa el valor obtenido'''
-        print("MINIMOS CUADRADOS")
+        print("Minimos Cuadrados")
         print("-"*57)
         print("Numerador: ",num)
         print("Denum: ",den)
@@ -97,40 +98,78 @@ class Act2(MathOp):
 
     @staticmethod
     def plot_graph(lx,ly,graph,xName = "X",yName = "Y"):
+        try:
+            path = os.getcwd()
+            resultPath = path+"\Resultados"
+        except Exception as e: pass
         '''# Plot Graph\n
         Metodo invocable para graficar datos y guardarlos'''
-        #p.xlabel(xName)
+        plt = p
+        plt.xlabel(xName)
         '''Nombre del eje X'''
-        #p.ylabel(yName)
+        plt.ylabel(yName)
         '''Nombre del eje Y'''
-        
+        plt.plot(lx,ly)
         '''Grafica'''
         name = "Grafica_{}.png".format(graph)
-        p.savefig(name)
+        plt.savefig(name)
         '''Exportacion de la grafica'''
         print("Gráfica "+name+" exportada...")
     
     @staticmethod    
-    def vH():
-        '''# Vh'''
+    def Mediciones():
+        '''Primera Medicion'''
+        file = "Vh_CSV.csv"
         aIndex = 0
         fIndex = 10
         rep = 0
+        hList = []
+        vhlist = []
+        print("##PRIMERA MEDICION##")
+        print("="*57)
         for i in range(0,5):
-            H = Act2.hPopote[rep]
-            b1 = Act2.minimos_cuadrados(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex])
-            b0 = Act2.B0(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],b1)
-            Vh = b0 + b1*H
+            print("Repeticion #"+str(i+1))
+            print("-"*57)
+            print("-"*57)
+            times = Act2.tiempos[aIndex:fIndex]
+            b1 = Act2.minimos_cuadrados(times,Act2.Hagua[aIndex:fIndex])
+            b0 = Act2.B0(times,Act2.Hagua[aIndex:fIndex],b1)
+            print("B0: "+str(b0))
+            print("B1: "+str(b1))
+            for c in range(0,10):
+                hList.append(b0+(b1*times[c]))
+                print("Time: "+str(times[c])+" "*10,end="")
+                print("h: "+str(b0+(b1*times[c]))+" cm")
             aIndex += 10
             fIndex += 10
+            vhlist.append(b1)
             rep += 1
-            graphName = "Vh_Repeticion"+ str(rep)
-            #Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua,graphName,"Tiempos","Alturas")
-            print("Vh: ",Vh)
-            print("B0: ",b0)
-            print("B1: ",b1)
-            print("H: ",H)
+            graphName = "h_Repeticion"+ str(rep)
+            #Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
             print("-"*57)
-        print(Act2.Hagua)
-        print(Act2.tiempos)
+        # print(Act2.Hagua)
+        # print(Act2.tiempos)
+        print("##SEGUNDA MEDICION##")
+        print("-"*57)
+        squaredh = []
+        times2 = []
+        squaredT = []
+        aIndex = 0
+        fIndex = 10
+        for element in Act2.Hagua:
+            squaredh.append(element*element)
+        for clock in Act2.tiempos:
+            squaredT.append(clock*clock)
+        for s in range(0,5):
+            print("Repeticion #"+str(s+1))
+            print("-"*57)
+            print("-"*57)
+            times2 = squaredh[aIndex:fIndex]
+            b1 = Act2.minimos_cuadrados(Act2.hPopote,vhlist)
+            b0 = Act2.B0(Act2.hPopote,vhlist,b1)
+            print("B0: "+str(b0))
+            print("B1: "+str(b1))
+            Vh2 = b0 + (b1 * Act2.hPopote[s])
+            print("Vh2: ",Vh2)
+            print("-"*57)
         print("**END**")
