@@ -19,18 +19,22 @@ class Act2(MathOp):
 
     @staticmethod
     def import_Data():
+        '''# Hi'''
         path = os.getcwd()
         resultPath = path+"\DB"
         os.chdir(resultPath)
         with open("tiemposA2.txt","r") as f: 
-            for element in f.readlines(): tiempos.append(float(element))
+            for element in f.readlines(): 
+                Act2.tiempos.append(float(element))
         with open("cmA2.txt","r") as f: 
-            for element in f.readlines(): cmA2.append(float(element))
+            for element in f.readlines(): 
+                Act2.cmA2.append(float(element))
         with open("Hagua.txt","r") as f: 
-            for element in f.readlines(): Hagua.append(float(element))
+            for element in f.readlines(): 
+               Act2.Hagua.append(float(element))
         with open("hPopote.txt","r") as f: 
-            for element in f.readlines(): hPopote.append(float(element))
-
+            for element in f.readlines(): 
+                Act2.hPopote.append(float(element))
 
     @staticmethod
     def minimos_cuadrados(lx,ly):
@@ -71,53 +75,58 @@ class Act2(MathOp):
         '''Regresa el valor obtenido'''
         return minimosCuadrados
 
-        @staticmethod
-        def B0(x,y,B1):
-            '''# Beta 0\n
-            Encuentra la variable con la forma:\n
-            B0 = promY - (Beta1 * promX)'''
-            py = super().promedio(y)
-            '''Promedio de Y'''
-            px = super().promedio(x)
-            '''Promedio de X'''
-            B1 = minimosCuadrados(x,y)
-            '''Beta 1 con minimos cuadrados'''
-            b0 = py - (B1*px)
-            '''Aplicacion de la formula'''
-            '''Regresa el calculo'''
-            return b0
+    @staticmethod
+    def B0(x,y,B1):
+        '''# Beta 0\n
+        Encuentra la variable con la forma:\n
+        B0 = promY - (Beta1 * promX)'''
+        py = Act2.promedio(y)
+        '''Promedio de Y'''
+        px = Act2.promedio(x)
+        '''Promedio de X'''
+        B1 = Act2.minimos_cuadrados(x,y)
+        '''Beta 1 con minimos cuadrados'''
+        b0 = py - (B1*px)
+        '''Aplicacion de la formula'''
+        '''Regresa el calculo'''
+        return b0
 
-        @staticmethod
-        def plot_graph(lx,ly,graph,xName = "X",yName = "Y"):
-            '''# Plot Graph\n
-            Metodo invocable para graficar datos y guardarlos'''
-            p.xlabel(xName)
-            '''Nombre del eje X'''
-            p.ylabel(yName)
-            '''Nombre del eje Y'''
-            p.plot(lx,ly)
-            '''Grafica'''
-            name = "Grafica_{}.png".format(graph)
-            p.savefig(name)
-            '''Exportacion de la grafica'''
-            print("Gráfica "+name+" exportada...")
+    @staticmethod
+    def plot_graph(lx,ly,graph,xName = "X",yName = "Y"):
+        '''# Plot Graph\n
+        Metodo invocable para graficar datos y guardarlos'''
+        #p.xlabel(xName)
+        '''Nombre del eje X'''
+        #p.ylabel(yName)
+        '''Nombre del eje Y'''
         
-        @staticmethod
-        def Vh():
-            aIndex = 0
-            fIndex = 10
-            rep = 0
-            for i in range(0,10):
-                H = hPopote[rep]
-                b1 = minimos_cuadrados(tiempos[aIndex:fIndex],Hagua)
-                b0 = B0(tiempos[aIndex:fIndex],Hagua,b1)
-                Vh = b0 + b1*H
-                aIndex += 10
-                fIndex += 10
-                rep += 1
-                print(Vh)
-                print("-"*57)
-            print("**END**")
-
-Vh()
-
+        '''Grafica'''
+        name = "Grafica_{}.png".format(graph)
+        p.savefig(name)
+        '''Exportacion de la grafica'''
+        print("Gráfica "+name+" exportada...")
+    
+    @staticmethod    
+    def vH():
+        '''# Vh'''
+        aIndex = 0
+        fIndex = 10
+        rep = 0
+        for i in range(0,len(Act2.hPopote)):
+            H = Act2.hPopote[rep]
+            b1 = Act2.minimos_cuadrados(Act2.Hagua,Act2.tiempos[aIndex:fIndex])
+            b0 = Act2.B0(Act2.Hagua,Act2.tiempos[aIndex:fIndex],b1)
+            Vh = b0 + b1*H
+            aIndex += 10
+            fIndex += 10
+            rep += 1
+            graphName = "Vh_Repeticion"+ str(rep)
+            #Act2.plot_graph(Act2.tiempos[aIndex:fIndex],Act2.Hagua,graphName,"Tiempos","Alturas")
+            print("Vh: ",Vh)
+            print("B0: ",b0)
+            print("B1: ",b1)
+            print("H: ",H)
+            print("-"*57)
+        print(Act2.Hagua)
+        print(Act2.tiempos)
+        print("**END**")
