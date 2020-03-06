@@ -1,5 +1,7 @@
 import matplotlib as p
 from Operations.MathOp import MathOp
+from math import sqrt
+import os
 class Act2(MathOP):
     ''' # MathOpExtension\n
     - Clase con Métodos para la Actividad 2 del Experimento\n
@@ -8,6 +10,7 @@ class Act2(MathOP):
     Aout = 1
     Ain = 0
     Ah = 0
+    g =9.81
     @staticmethod
     def minimos_cuadrados(lx,ly):
         '''# Minimos Cuadrados\n
@@ -48,13 +51,15 @@ class Act2(MathOP):
         return minimosCuadrados
 
         @staticmethod
-        def plot_graph(lx,ly,xName = "X",yName = "Y"):
+        def plot_graph(lx,ly,graph,xName = "X",yName = "Y"):
             p.plot(lx,ly)
             p.xlabel(xName)
             p.ylabel(yName)
-            p.show()
+            name = "Grafica_{}.png".format(graph)
+            p.savefig(name)
         
         @staticmethod
-        def gravedad(parameter_list):
-            Vh = Aout
+        def gravedad(H):
+            Vh = -(Aout/Ah) * sqrt(2*g*H)
+
     print("x")

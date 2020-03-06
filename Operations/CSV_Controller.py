@@ -1,8 +1,11 @@
 '''##CSV_Controller
 Clase Estatica de Manejo de Archivos CSV'''
 from csv import writer, QUOTE_MINIMAL
+import os
 '''Importacion de elementos necesarios para CSV'''
-file = "Resultados.csv"
+file = "ResultadosEx.csv"
+path = os.getcwd()
+resultPath = path+"\Resultados"
 '''Nombre del archivo de Salida'''
 def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
     '''# Exportar CSV\n
@@ -15,6 +18,11 @@ def exportar_csv(velM,ac,velS,kinectic,tiempo,altura):
     - Todas las listas deben tener 30 Posiciones '''
     renglon = []
     '''Iniciacion de la lista 'renglon' que servira para imprimir las variables en el CSV'''
+    try:
+        os.chdir(resultPath)
+        print(resultPath)
+    except Exception as e:
+        print(e)
     try:
         ''' Debido al manejo de archivos, es necesario manejo de Excepciones '''
         with open(file,"w",newline='') as csv_file:
