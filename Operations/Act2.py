@@ -57,9 +57,9 @@ class Act2(MathOP):
             p.ylabel(yName)
             name = "Grafica_{}.png".format(graph)
             p.savefig(name)
+            print("Gráfica "+name+" exportada...")
         
         @staticmethod
-        def gravedad(H):
+        def Vh(H):
             Vh = -(Aout/Ah) * sqrt(2*g*H)
-
-    print("x")
+        return Vh
