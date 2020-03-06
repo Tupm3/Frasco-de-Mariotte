@@ -120,7 +120,8 @@ class Act2(MathOp):
     
     @staticmethod    
     def Mediciones():
-        '''Medicion de Datos'''
+        '''# Medicion de Datos
+        Genera la medición de H y genera las gráficas correspondientes'''
         path = os.getcwd()
         resultPath = path+"\Resultados"
         os.chdir(resultPath)
@@ -131,7 +132,7 @@ class Act2(MathOp):
         rep = 0
         hList = []
         vhlist = []
-        print("##PRIMERA MEDICION##")
+        print("##PRIMERA MEDICION##") 
         print("="*57)
         for i in range(0,5):
             print("Repeticion #"+str(i+1))
