@@ -132,6 +132,31 @@ class Act2(MathOp):
             plt.clf()
         '''Exportacion de la grafica'''
         print("Gráfica "+name+" exportada...")
+
+    
+    @staticmethod
+    def sy(N,ly):
+        sx = 0
+        sx2 = 0
+        for element in ly:
+            sx += element
+            sx2 += element * element
+        denum = (N*sx2) - (sx*sx)
+        result = sqrt(N/denum)
+        return result
+    
+    @staticmethod
+    def incertidumbre(N,lx,ly):
+        sy = Act2.sy(N,ly)
+        sx2 =0
+        sx = 0
+        for element in lx:
+            sx+=element
+            sx2 += element * element
+        denum = (N*sx2) - (sx*sx)
+        r = sqrt(sx2/denum)
+        result = sy * r
+        return result
     
     @staticmethod    
     def Mediciones():
@@ -147,6 +172,7 @@ class Act2(MathOp):
         rep = 0
         hList = []
         vhlist = []
+        dVhlist = []
         print("##PRIMERA MEDICION##") 
         print("="*57)
         for i in range(0,5):
@@ -158,6 +184,8 @@ class Act2(MathOp):
             b0 = Act2.B0(times,Act2.Hagua[aIndex:fIndex],b1)
             print("B0: "+str(b0))
             print("B1: "+str(b1))
+            dVhlist.append(Act2.incertidumbre(len(times),times,Act2.Hagua[aIndex:fIndex]))
+            print("Error de Vh: ",dVhlist)
             for c in range(0,10):
                 hList.append(b0+(b1*times[c]))
                 print("Time: "+str(times[c])+" "*10,end="")
@@ -176,11 +204,16 @@ class Act2(MathOp):
         print("##SEGUNDA MEDICION##")
         print("-"*57)
         squaredVh = []
+        dVh2list = []
+        index = 0
         for element in vhlist:
             squaredVh.append(element * element)
             print(element)
             print(element*element)
+            dVh2list.append(2*element*dVhlist[index])
+            index+=1
         b1 = Act2.minimos_cuadrados(Act2.hPopote,squaredVh)
+        db1 = Act2.incertidumbre(len(Act2.hPopote),Act2.hPopote,squaredVh)
         b0 = Act2.B0(Act2.hPopote,squaredVh,b1)
         print("B0: ",b0)
         print("B1: ",b1)
@@ -191,3 +224,29 @@ class Act2(MathOp):
         print("-"*57)
         print("Gravedad: ",g)
         print("="*57)
+        print("-"*57)
+        print("##CALCULO DE INCERTIDUMBRES")
+        print("="*57)
+        print("Incertidumbres de Vh:")
+        print(dVhlist)
+        print("-"*57)
+        print("Incertidumbres de Vh^2:")
+        print(dVh2list)
+        print("-"*57)
+        print("Vh")
+        print("="*57)
+        # index = 0
+        # for element in vhlist:
+        #     print(str(element)+" +- "+str(dVhlist[index]))
+        #     index+=1
+        # print("Vh^2")
+        # print("="*57)
+        # for element in squaredVh:
+        #     print(str(element)+" +- "+str(dVh2list[index]))
+        #     index+=1
+        # print("-"*57)
+        print("Error de la segunda B1: ", db1)
+        dAh = 1.2025
+        dAout = 0.1257
+        dg = (1/2) * ((2*Act2.Ah*dAout*b1*pow(Act2.Aout,-2)) + (db1*(Act2.Ah * Act2.Ah)* pow(Act2.Aout,-2)) + (2*pow(Act2.Aout,-3)*dAout*b1*(Act2.Ah * Act2.Ah)))
+        print("El error de la gravedad es: ",dg)
