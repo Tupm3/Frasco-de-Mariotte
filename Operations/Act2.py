@@ -9,9 +9,9 @@ class Act2(MathOp):
     - Clase con Métodos para la Actividad 2 del Experimento\n
     Notas:\n
     - Hereda de MathOp'''
-    Aout = 1
+    Aout = 0.1257
     Ain = 0
-    Ah = 0
+    Ah = 0.157
     g =9.81
     tiempos = []
     cmA2 = []
@@ -69,7 +69,7 @@ class Act2(MathOp):
         num = s1 - ((1/len(lx))*(sx)*(sy))
         '''Numerador de la formula de minimos cuadrados en la forma:
             sumatoria(xiyi) - (1/n)*(sumatoria(xi) * (sumatoria(yi))) '''
-        den = sx2 - ((1/len(lx))* sx * sx)
+        den = sx2 - ((1/len(lx))* (sx * sx))
         '''Denominador de la formula de minimos cuadrados en la forma:
             sumatoria(xi^2) - (1/n)*(sumatoria(xi)^2)'''
         minimosCuadrados = num/den
@@ -77,6 +77,8 @@ class Act2(MathOp):
         '''Regresa el valor obtenido'''
         print("Minimos Cuadrados")
         print("-"*57)
+        print("Len X: ", len(lx))
+        print("Len Y: ",len(ly))
         print("Numerador: ",num)
         print("Denum: ",den)
         print("Minimos Cuadrados: ",minimosCuadrados)
@@ -147,8 +149,8 @@ class Act2(MathOp):
                 hList.append(b0+(b1*times[c]))
                 print("Time: "+str(times[c])+" "*10,end="")
                 print("h: "+str(b0+(b1*times[c]))+" cm")
-            vhlist.append(b1)
             rep += 1
+            if rep>= 2: vhlist.append(b1)
             graphName = "h_Repeticion"+ str(rep)
             Act2.plot_graph(times,Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
             print("-"*57)
@@ -161,9 +163,13 @@ class Act2(MathOp):
         squaredVh = []
         for element in vhlist:
             squaredVh.append(element * element)
-        b1 = Act2.minimos_cuadrados(squaredVh,Act2.hPopote)
-        b0 = Act2.B0(squaredVh,Act2.hPopote,b1)
+            print(element)
+            print(element*element)
+        b1 = Act2.minimos_cuadrados(Act2.hPopote,squaredVh)
+        b0 = Act2.B0(Act2.hPopote,squaredVh,b1)
         print("B0: ",b0)
         print("B1: ",b1)
-        Act2.plot_graph(Act2.hPopote,squaredVh,"Vh2","Vh^2","H")
-       
+        Act2.plot_graph(Act2.hPopote,squaredVh,"Vh2","H","Vh^2")
+        g = (b1 * (Act2.Ah * Act2.Ah))/(2 * (Act2.Aout*Act2.Aout))
+        print("-"*57)
+        print("Gravedad: ",g)
