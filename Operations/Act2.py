@@ -11,12 +11,23 @@ class Act2(MathOp):
     - Hereda de MathOp'''
     Aout = 0.1257
     Ain = 0
-    Ah = 0.157
+    Ah = 143 - 0.2827
     g =9.81
     tiempos = []
     cmA2 = []
     Hagua = []
     hPopote = []
+
+    @staticmethod
+    def lineaAjuste(lenX,m,b = 0,initX = 0):
+        '''# Linea de Ajuste'''
+        lx = []
+        ly = []
+        for c in range(int(initX),int(lenX)+1):
+            y = m*c + b
+            ly.append(y)
+            lx.append(c)
+        return lx,ly
 
     @staticmethod
     def import_Data():
@@ -100,7 +111,7 @@ class Act2(MathOp):
         return b0
 
     @staticmethod
-    def plot_graph(lx,ly,graph,xName = "X",yName = "Y"):
+    def plot_graph(lx,ly,graph,xName = "X",yName = "Y",clear = True):
         try:
             path = os.getcwd()
             resultPath = path+"\Resultados"
@@ -108,6 +119,7 @@ class Act2(MathOp):
         '''# Plot Graph\n
         Metodo invocable para graficar datos y guardarlos'''
         plt = p
+        plt.title(graph)
         plt.xlabel(xName)
         '''Nombre del eje X'''
         plt.ylabel(yName)
@@ -115,8 +127,9 @@ class Act2(MathOp):
         plt.plot(lx,ly)
         '''Grafica'''
         name = "Grafica_{}.png".format(graph)
-        plt.savefig(name)
-        plt.clf()
+        if clear: 
+            plt.savefig(name)
+            plt.clf()
         '''Exportacion de la grafica'''
         print("Gráfica "+name+" exportada...")
     
@@ -152,7 +165,9 @@ class Act2(MathOp):
             rep += 1
             if rep>= 2: vhlist.append(b1)
             graphName = "h_Repeticion"+ str(rep)
-            Act2.plot_graph(times,Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas")
+            Act2.plot_graph(times,Act2.Hagua[aIndex:fIndex],graphName,"Tiempos","Alturas",False)
+            nx,ny = Act2.lineaAjuste(times[len(times)-1],b1,b0)
+            Act2.plot_graph(nx,ny,graphName,"Tiempos","Alturas")
             print("-"*57)
             aIndex += 10
             fIndex += 10
@@ -169,7 +184,10 @@ class Act2(MathOp):
         b0 = Act2.B0(Act2.hPopote,squaredVh,b1)
         print("B0: ",b0)
         print("B1: ",b1)
-        Act2.plot_graph(Act2.hPopote,squaredVh,"Vh2","H","Vh^2")
+        Act2.plot_graph(Act2.hPopote,squaredVh,"Vh2","H","Vh^2",False)
+        nx2,ny2 = Act2.lineaAjuste(Act2.hPopote[len(Act2.hPopote)-1],b1,b0,Act2.hPopote[0])
+        Act2.plot_graph(nx2,ny2,"Vh2","H","Vh^2")
         g = (b1 * (Act2.Ah * Act2.Ah))/(2 * (Act2.Aout*Act2.Aout))
         print("-"*57)
         print("Gravedad: ",g)
+        print("="*57)
