@@ -158,26 +158,12 @@ class Act2(MathOp):
         # print(Act2.tiempos)
         print("##SEGUNDA MEDICION##")
         print("-"*57)
-        squaredh = []
-        times2 = []
-        squaredT = []
-        aIndex = 0
-        fIndex = 10
-        for element in Act2.Hagua:
-            squaredh.append(element*element)
-        for clock in Act2.tiempos:
-            squaredT.append(clock*clock)
-        for s in range(0,5):
-            print("Repeticion #"+str(s+1))
-            print("-"*57)
-            print("-"*57)
-            times2 = squaredh[aIndex:fIndex]
-            b1 = Act2.minimos_cuadrados(Act2.hPopote,vhlist)
-            b0 = Act2.B0(Act2.hPopote,vhlist,b1)
-            print("B0: "+str(b0))
-            print("B1: "+str(b1))
-            Vh2 = b0 + (b1 * Act2.hPopote[s])
-            print("Vh2: ",Vh2)
-            print("-"*57)
-        print("**END**")
-        os.chdir(path)
+        squaredVh = []
+        for element in vhlist:
+            squaredVh.append(element * element)
+        b1 = Act2.minimos_cuadrados(squaredVh,Act2.hPopote)
+        b0 = Act2.B0(squaredVh,Act2.hPopote,b1)
+        print("B0: ",b0)
+        print("B1: ",b1)
+        Act2.plot_graph(Act2.hPopote,squaredVh,"Vh2","Vh^2","H")
+       
